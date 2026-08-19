@@ -1,67 +1,93 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StockMaster</title>
+    <title>StockMaster - Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header>
+<header>
+    <div>
         <h1>StockMaster</h1>
         <p>Sistema Inteligente de Gestão de Estoque</p>
-    </header>
+    </div>
+</header>
 
-    <main>
-        <section class="dashboard">
-            <h2>Dashboard</h2>
+<main>
 
-            <div class="cards">
-                <div class="card">
-                    <h3>Produtos</h3>
-                    <p id="totalProdutos">0</p>
-                </div>
+    <section class="dashboard">
+        <h2>Dashboard</h2>
 
-                <div class="card">
-                    <h3>Estoque baixo</h3>
-                    <p id="estoqueBaixo">0</p>
-                </div>
+        <div class="cards">
 
-                <div class="card">
-                    <h3>Alertas</h3>
-                    <p id="totalAlertas">0</p>
-                </div>
+            <div class="card">
+                <h3>Produtos</h3>
+                <p id="totalProdutos">0</p>
             </div>
-        </section>
 
-        <section class="menu">
-            <h2>Gestão de Estoque</h2>
+            <div class="card">
+                <h3>Estoque baixo</h3>
+                <p id="estoqueBaixo">0</p>
+            </div>
 
-            <button onclick="mostrarMensagem('Cadastro de Produtos')">
-                Cadastro de Produtos
+            <div class="card">
+                <h3>Alertas</h3>
+                <p id="totalAlertas">0</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="menu">
+
+        <h2>Gestão de Estoque</h2>
+
+        <div class="menu-grid">
+
+            <button onclick="window.location.href='cadastro-produtos.html'">
+                <span>📦</span>
+                <strong>Cadastro de Produtos</strong>
+                <small>Cadastre e gerencie produtos</small>
             </button>
 
-            <button onclick="mostrarMensagem('Entrada de Estoque')">
-                Entrada de Estoque
+            <button onclick="window.location.href='entrada-estoque.html'">
+                <span>📥</span>
+                <strong>Entrada de Estoque</strong>
+                <small>Registre produtos recebidos</small>
             </button>
 
-            <button onclick="mostrarMensagem('Saída de Estoque')">
-                Saída de Estoque
+            <button onclick="window.location.href='saida-estoque.html'">
+                <span>📤</span>
+                <strong>Saída de Estoque</strong>
+                <small>Registre produtos retirados</small>
             </button>
 
-            <button onclick="mostrarMensagem('Alertas de Estoque')">
-                Alertas
+            <button onclick="window.location.href='alertas.html'">
+                <span>⚠️</span>
+                <strong>Alertas</strong>
+                <small>Consulte os alertas do estoque</small>
             </button>
-        </section>
-    </main>
 
-    <footer>
-        <p>StockMaster © 2026</p>
-    </footer>
+            <button onclick="window.location.href='inventario.html'">
+                <span>📋</span>
+                <strong>Consulta de Inventário</strong>
+                <small>Consulte todos os produtos</small>
+            </button>
 
-    <script src="script.js"></script>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>StockMaster © 2026</p>
+</footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
