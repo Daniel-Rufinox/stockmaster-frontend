@@ -9,42 +9,103 @@
 
 <body>
 
-    <header>
-        <h1>StockMaster</h1>
-        <p>Cadastro de Produtos</p>
-    </header>
+<header>
+    <h1>StockMaster</h1>
+    <p>Cadastro de Produtos</p>
+</header>
 
-    <main>
-        <section class="menu">
-            <h2>Novo Produto</h2>
+<main>
 
-            <label>Nome do produto</label>
-            <input type="text" id="nomeProduto" placeholder="Digite o nome do produto">
+    <a href="index.html" class="back">← Voltar ao Dashboard</a>
 
-            <label>Categoria</label>
-            <input type="text" id="categoriaProduto" placeholder="Digite a categoria">
+    <section class="form-container">
 
-            <label>Quantidade</label>
-            <input type="number" id="quantidadeProduto" placeholder="Digite a quantidade">
+        <h2>Novo Produto</h2>
 
-            <label>Estoque mínimo</label>
-            <input type="number" id="estoqueMinimo" placeholder="Digite o estoque mínimo">
+        <div class="form-group">
+            <label for="nomeProduto">Nome do produto</label>
 
-            <button onclick="cadastrarProduto()">Cadastrar Produto</button>
+            <input
+                type="text"
+                id="nomeProduto"
+                placeholder="Digite o nome do produto"
+            >
+        </div>
 
-            <br><br>
+        <div class="form-group">
+            <label for="categoriaProduto">Categoria</label>
 
-            <button onclick="window.location.href='index.html'">
-                Voltar ao Dashboard
+            <input
+                type="text"
+                id="categoriaProduto"
+                placeholder="Digite a categoria"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="quantidadeProduto">Quantidade inicial</label>
+
+            <input
+                type="number"
+                id="quantidadeProduto"
+                min="0"
+                placeholder="Digite a quantidade"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="estoqueMinimo">Estoque mínimo</label>
+
+            <input
+                type="number"
+                id="estoqueMinimo"
+                min="0"
+                placeholder="Digite o estoque mínimo"
+            >
+        </div>
+
+        <button class="btn btn-primary" onclick="cadastrarProduto()">
+            Cadastrar Produto
+        </button>
+
+        <a href="index.html">
+            <button class="btn btn-secondary" type="button">
+                Cancelar
             </button>
-        </section>
-    </main>
+        </a>
 
-    <footer>
-        <p>StockMaster © 2026</p>
-    </footer>
+    </section>
 
-    <script src="script.js"></script>
+</main>
+
+<footer>
+    <p>StockMaster © 2026</p>
+</footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
+
+5. Faça Commit changes.
+6. Mantenha Commit directly to the main branch.
+7. Confirme.
+
+Depois disso
+
+Não precisa criar mais arquivos. A estrutura principal estará pronta.
+
+Agora vamos testar o sistema no site:
+
+GitHub → Settings → Pages → Visit site
+
+Quando abrir o StockMaster, primeiro clique em Cadastro de Produtos e veja se a tela abre.
+
+Se abrir, cadastre um produto de teste, por exemplo:
+
+- Nome: "Arroz"
+- Categoria: "Alimentos"
+- Quantidade: "10"
+- Estoque mínimo: "5"
+
+Depois me diga o que aconteceu quando você clicou em “Cadastrar Produto”.
