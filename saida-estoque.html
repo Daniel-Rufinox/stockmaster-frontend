@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saída de Estoque - StockMaster</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>StockMaster</h1>
+    <p>Registro de Saída de Estoque</p>
+</header>
+
+<main>
+
+    <a href="index.html" class="back">← Voltar ao Dashboard</a>
+
+    <section class="form-container">
+
+        <h2>Saída de Estoque</h2>
+
+        <div class="form-group">
+            <label for="produtoSaida">Produto</label>
+
+            <select id="produtoSaida">
+                <option value="">Selecione um produto</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="quantidadeSaida">Quantidade</label>
+
+            <input
+                type="number"
+                id="quantidadeSaida"
+                min="1"
+                placeholder="Digite a quantidade"
+            >
+        </div>
+
+        <button class="btn btn-danger" onclick="registrarSaida()">
+            Registrar Saída
+        </button>
+
+        <a href="index.html">
+            <button class="btn btn-secondary" type="button">
+                Cancelar
+            </button>
+        </a>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>StockMaster © 2026</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
+5. Desça até o final.
+6. Clique em Commit changes.
+7. Deixe Commit directly to the main branch.
+8. Confirme o commit.
+
+Depois me diga “saída pronta” e vamos criar a tela de Alertas.
