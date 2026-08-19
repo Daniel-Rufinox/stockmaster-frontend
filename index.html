@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockMaster</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>StockMaster</h1>
+        <p>Sistema Inteligente de Gestão de Estoque</p>
+    </header>
+
+    <main>
+        <section class="dashboard">
+            <h2>Dashboard</h2>
+
+            <div class="cards">
+                <div class="card">
+                    <h3>Produtos</h3>
+                    <p id="totalProdutos">0</p>
+                </div>
+
+                <div class="card">
+                    <h3>Estoque baixo</h3>
+                    <p id="estoqueBaixo">0</p>
+                </div>
+
+                <div class="card">
+                    <h3>Alertas</h3>
+                    <p id="totalAlertas">0</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="menu">
+            <h2>Gestão de Estoque</h2>
+
+            <button onclick="mostrarMensagem('Cadastro de Produtos')">
+                Cadastro de Produtos
+            </button>
+
+            <button onclick="mostrarMensagem('Entrada de Estoque')">
+                Entrada de Estoque
+            </button>
+
+            <button onclick="mostrarMensagem('Saída de Estoque')">
+                Saída de Estoque
+            </button>
+
+            <button onclick="mostrarMensagem('Alertas de Estoque')">
+                Alertas
+            </button>
+        </section>
+    </main>
+
+    <footer>
+        <p>StockMaster © 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
