@@ -1,93 +1,84 @@
- <!DOCTYPE html>
-<html lang="pt-BR">
+ <!DOCTYPE html><html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StockMaster - Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css"><script>
+    // Verificar se o usuário está logado
+    if (localStorage.getItem("usuarioLogado") !== "true") {
+        window.location.href = "login.html";
+    }
+</script>
 
-<body>
-
-<header>
+</head><body><header>
     <div>
         <h1>StockMaster</h1>
         <p>Sistema Inteligente de Gestão de Estoque</p>
     </div>
-</header>
+</header><main><section class="dashboard">
+    <h2>Dashboard</h2>
 
-<main>
+    <div class="cards">
 
-    <section class="dashboard">
-        <h2>Dashboard</h2>
-
-        <div class="cards">
-
-            <div class="card">
-                <h3>Produtos</h3>
-                <p id="totalProdutos">0</p>
-            </div>
-
-            <div class="card">
-                <h3>Estoque baixo</h3>
-                <p id="estoqueBaixo">0</p>
-            </div>
-
-            <div class="card">
-                <h3>Alertas</h3>
-                <p id="totalAlertas">0</p>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="menu">
-
-        <h2>Gestão de Estoque</h2>
-
-        <div class="menu-grid">
-
-            <button onclick="window.location.href='cadastro-produtos.html'">
-                <span>📦</span>
-                <strong>Cadastro de Produtos</strong>
-                <small>Cadastre e gerencie produtos</small>
-            </button>
-
-            <button onclick="window.location.href='entrada-estoque.html'">
-                <span>📥</span>
-                <strong>Entrada de Estoque</strong>
-                <small>Registre produtos recebidos</small>
-            </button>
-
-            <button onclick="window.location.href='saida-estoque.html'">
-                <span>📤</span>
-                <strong>Saída de Estoque</strong>
-                <small>Registre produtos retirados</small>
-            </button>
-
-            <button onclick="window.location.href='alertas.html'">
-                <span>⚠️</span>
-                <strong>Alertas</strong>
-                <small>Consulte os alertas do estoque</small>
-            </button>
-
-            <button onclick="window.location.href='inventario.html'">
-                <span>📋</span>
-                <strong>Consulta de Inventário</strong>
-                <small>Consulte todos os produtos</small>
-            </button>
-
+        <div class="card">
+            <h3>Produtos</h3>
+            <p id="totalProdutos">0</p>
         </div>
 
-    </section>
+        <div class="card">
+            <h3>Estoque baixo</h3>
+            <p id="estoqueBaixo">0</p>
+        </div>
 
-</main>
+        <div class="card">
+            <h3>Alertas</h3>
+            <p id="totalAlertas">0</p>
+        </div>
 
-<footer>
+    </div>
+</section>
+
+<section class="menu">
+
+    <h2>Gestão de Estoque</h2>
+
+    <div class="menu-grid">
+
+        <button onclick="window.location.href='cadastro-produtos.html'">
+            <span>📦</span>
+            <strong>Cadastro de Produtos</strong>
+            <small>Cadastre e gerencie produtos</small>
+        </button>
+
+        <button onclick="window.location.href='entrada-estoque.html'">
+            <span>📥</span>
+            <strong>Entrada de Estoque</strong>
+            <small>Registre produtos recebidos</small>
+        </button>
+
+        <button onclick="window.location.href='saida-estoque.html'">
+            <span>📤</span>
+            <strong>Saída de Estoque</strong>
+            <small>Registre produtos retirados</small>
+        </button>
+
+        <button onclick="window.location.href='alertas.html'">
+            <span>⚠️</span>
+            <strong>Alertas</strong>
+            <small>Consulte os alertas do estoque</small>
+        </button>
+
+        <button onclick="window.location.href='inventario.html'">
+            <span>📋</span>
+            <strong>Consulta de Inventário</strong>
+            <small>Consulte todos os produtos</small>
+        </button>
+
+    </div>
+
+</section>
+
+</main><footer>
     <p>StockMaster © 2026</p>
-</footer>
-
-<script src="script.js"></script>
-
-</body>
+</footer><script src="script.js"></script></body>
 </html>
