@@ -490,3 +490,51 @@ carregarSelectProdutos();
 carregarAlertas();
 
 });
+// ===============================
+// LOGIN
+// ===============================
+
+function realizarLogin() {
+
+const usuario = document.getElementById("usuario");
+const senha = document.getElementById("senha");
+const mensagem = document.getElementById("mensagemLogin");
+
+if (!usuario || !senha) return;
+
+const nomeUsuario = usuario.value.trim();
+const senhaUsuario = senha.value.trim();
+
+if (!nomeUsuario || !senhaUsuario) {
+
+    if (mensagem) {
+        mensagem.style.display = "block";
+        mensagem.textContent = "Preencha o usuário e a senha.";
+    }
+
+    return;
+}
+
+// Login temporário para demonstração do front-end
+if (nomeUsuario === "admin" && senhaUsuario === "1234") {
+
+    if (mensagem) {
+        mensagem.style.display = "block";
+        mensagem.textContent = "Login realizado com sucesso!";
+    }
+
+    localStorage.setItem("usuarioLogado", "true");
+
+    setTimeout(function () {
+        window.location.href = "index.html";
+    }, 500);
+
+} else {
+
+    if (mensagem) {
+        mensagem.style.display = "block";
+        mensagem.textContent = "Usuário ou senha incorretos.";
+    }
+}
+
+}
