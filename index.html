@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,14 @@
     <link rel="stylesheet" href="style.css">
 
     <script>
+        // Verificar se o usuário está logado
         if (localStorage.getItem("usuarioLogado") !== "true") {
+            window.location.href = "login.html";
+        }
+
+        // Função para sair do sistema
+        function sairSistema() {
+            localStorage.removeItem("usuarioLogado");
             window.location.href = "login.html";
         }
     </script>
@@ -17,18 +25,26 @@
 
 <header>
     <h1>StockMaster</h1>
-
-    <nav>
-        <p>⌂ &nbsp; Dashboard</p>
-        <p>▣ &nbsp; Produtos</p>
-        <p>↕ &nbsp; Movimentações</p>
-        <p>▥ &nbsp; Relatórios</p>
-        <p>♙ &nbsp; Usuários</p>
-        <p>↪ &nbsp; Sair</p>
-    </nav>
+    <p>Sistema Inteligente de Gestão de Estoque</p>
 </header>
 
 <main>
+
+    <nav class="menu-navegacao">
+
+        <a href="index.html">🏠 Dashboard</a>
+
+        <a href="cadastro-produtos.html">📦 Produtos</a>
+
+        <a href="entrada-estoque.html">↕️ Movimentações</a>
+
+        <a href="#" onclick="return false;">📊 Relatórios</a>
+
+        <a href="#" onclick="return false;">👤 Usuários</a>
+
+        <a href="#" onclick="sairSistema(); return false;">🚪 Sair</a>
+
+    </nav>
 
     <section class="dashboard">
 
