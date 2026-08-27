@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - StockMaster</title>
+    <link rel="stylesheet" href="style.css">
+</head><body><header>
+    <h1>StockMaster</h1>
+    <p>Sistema Inteligente de Gestão de Estoque</p>
+</header><main><section class="form-container login-container">
+
+    <h2>Entrar no sistema</h2>
+
+    <div class="form-group">
+        <label for="usuario">Usuário</label>
+
+        <input
+            type="text"
+            id="usuario"
+            placeholder="Digite seu usuário"
+            autocomplete="username"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="senha">Senha</label>
+
+        <input
+            type="password"
+            id="senha"
+            placeholder="Digite sua senha"
+            autocomplete="current-password"
+        >
+    </div>
+
+    <button
+        class="btn btn-primary"
+        type="button"
+        onclick="realizarLogin()"
+    >
+        Entrar
+    </button>
+
+    <p id="mensagemLogin" style="display: none;"></p>
+
+</section>
+
+</main><footer>
+    <p>StockMaster © 2026</p>
+</footer><script src="script.js"></script></body>
+</html>
