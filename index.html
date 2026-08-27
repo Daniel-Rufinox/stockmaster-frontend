@@ -10,9 +10,8 @@
     <link rel="stylesheet" href="style.css">
 
     <script>
-        // Verifica se o usuário está logado
         if (localStorage.getItem("usuarioLogado") !== "true") {
-            window.location.href = "login.html";
+            window.location.replace("login.html");
         }
     </script>
 </head>
@@ -59,34 +58,58 @@
 
         <div class="menu-grid">
 
-            <button onclick="window.location.href='cadastro-produtos.html'">
+            <button type="button"
+                onclick="window.location.href='cadastro-produtos.html'">
+
                 <span>📦</span>
                 <strong>Cadastro de Produtos</strong>
                 <small>Cadastre e gerencie produtos</small>
+
             </button>
 
-            <button onclick="window.location.href='entrada-estoque.html'">
+            <button type="button"
+                onclick="window.location.href='entrada-estoque.html'">
+
                 <span>📥</span>
                 <strong>Entrada de Estoque</strong>
                 <small>Registre produtos recebidos</small>
+
             </button>
 
-            <button onclick="window.location.href='saida-estoque.html'">
+            <button type="button"
+                onclick="window.location.href='saida-estoque.html'">
+
                 <span>📤</span>
                 <strong>Saída de Estoque</strong>
                 <small>Registre produtos retirados</small>
+
             </button>
 
-            <button onclick="window.location.href='alertas.html'">
+            <button type="button"
+                onclick="window.location.href='alertas.html'">
+
                 <span>⚠️</span>
                 <strong>Alertas</strong>
                 <small>Consulte os alertas do estoque</small>
+
             </button>
 
-            <button onclick="window.location.href='inventario.html'">
+            <button type="button"
+                onclick="window.location.href='inventario.html'">
+
                 <span>📋</span>
                 <strong>Consulta de Inventário</strong>
                 <small>Consulte todos os produtos</small>
+
+            </button>
+
+            <button type="button"
+                onclick="sairSistema()">
+
+                <span>🚪</span>
+                <strong>Sair do sistema</strong>
+                <small>Encerrar a sessão</small>
+
             </button>
 
         </div>
