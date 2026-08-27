@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>StockMaster - Dashboard</title>
+
     <link rel="stylesheet" href="style.css">
 
     <script>
+        // Proteção do Dashboard
         if (localStorage.getItem("usuarioLogado") !== "true") {
             window.location.href = "login.html";
         }
@@ -15,108 +19,100 @@
 
 <body>
 
-<div class="layout">
+<header>
+    <h1>StockMaster</h1>
+    <p>Sistema Inteligente de Gestão de Estoque</p>
+</header>
 
-    <aside class="sidebar">
+<!-- MENU -->
+<nav class="menu-navegacao">
 
-        <h1>StockMaster</h1>
+    <a href="index.html">⌂ Dashboard</a>
 
-        <nav>
-            <a href="index.html">⌂ <span>Dashboard</span></a>
+    <a href="cadastro-produtos.html">▣ Produtos</a>
 
-            <a href="cadastro-produtos.html">▣ <span>Produtos</span></a>
+    <a href="entrada-estoque.html">↕ Movimentações</a>
 
-            <a href="entrada-estoque.html">↕ <span>Movimentações</span></a>
+    <a href="inventario.html">▥ Relatórios</a>
 
-            <a href="inventario.html">▥ <span>Relatórios</span></a>
+    <a href="inventario.html">♙ Usuários</a>
 
-            <a href="login.html" onclick="sairSistema()">♙ <span>Usuários</span></a>
+    <a href="#" onclick="sairSistema(); return false;">↪ Sair</a>
 
-            <a href="login.html" onclick="sairSistema()">↪ <span>Sair</span></a>
-        </nav>
+</nav>
 
-    </aside>
+<main>
 
-    <div class="conteudo">
+    <section class="dashboard">
 
-        <header class="topbar"></header>
+        <h2>Dashboard</h2>
 
-        <main>
+        <div class="cards">
 
-            <section class="dashboard">
+            <div class="card">
+                <h3>Produtos</h3>
+                <p id="totalProdutos">0</p>
+            </div>
 
-                <h2>Dashboard</h2>
+            <div class="card">
+                <h3>Estoque baixo</h3>
+                <p id="estoqueBaixo">0</p>
+            </div>
 
-                <div class="cards">
+            <div class="card">
+                <h3>Alertas</h3>
+                <p id="totalAlertas">0</p>
+            </div>
 
-                    <div class="card">
-                        <h3>Produtos</h3>
-                        <p id="totalProdutos">0</p>
-                    </div>
+        </div>
 
-                    <div class="card">
-                        <h3>Estoque baixo</h3>
-                        <p id="estoqueBaixo">0</p>
-                    </div>
+    </section>
 
-                    <div class="card">
-                        <h3>Alertas</h3>
-                        <p id="totalAlertas">0</p>
-                    </div>
+    <section class="menu">
 
-                </div>
+        <h2>Gestão de Estoque</h2>
 
-            </section>
+        <div class="menu-grid">
 
-            <section class="menu">
+            <button onclick="window.location.href='cadastro-produtos.html'">
+                <span>📦</span>
+                <strong>Cadastro de Produtos</strong>
+                <small>Cadastre e gerencie produtos</small>
+            </button>
 
-                <h2>Gestão de Estoque</h2>
+            <button onclick="window.location.href='entrada-estoque.html'">
+                <span>📥</span>
+                <strong>Entrada de Estoque</strong>
+                <small>Registre produtos recebidos</small>
+            </button>
 
-                <div class="menu-grid">
+            <button onclick="window.location.href='saida-estoque.html'">
+                <span>📤</span>
+                <strong>Saída de Estoque</strong>
+                <small>Registre produtos retirados</small>
+            </button>
 
-                    <button onclick="window.location.href='cadastro-produtos.html'">
-                        <span>📦</span>
-                        <strong>Cadastro de Produtos</strong>
-                        <small>Cadastre e gerencie produtos</small>
-                    </button>
+            <button onclick="window.location.href='alertas.html'">
+                <span>⚠️</span>
+                <strong>Alertas</strong>
+                <small>Consulte os alertas do estoque</small>
+            </button>
 
-                    <button onclick="window.location.href='entrada-estoque.html'">
-                        <span>📥</span>
-                        <strong>Entrada de Estoque</strong>
-                        <small>Registre produtos recebidos</small>
-                    </button>
+            <button onclick="window.location.href='inventario.html'">
+                <span>📋</span>
+                <strong>Consulta de Inventário</strong>
+                <small>Consulte todos os produtos</small>
+            </button>
 
-                    <button onclick="window.location.href='saida-estoque.html'">
-                        <span>📤</span>
-                        <strong>Saída de Estoque</strong>
-                        <small>Registre produtos retirados</small>
-                    </button>
+        </div>
 
-                    <button onclick="window.location.href='alertas.html'">
-                        <span>⚠️</span>
-                        <strong>Alertas</strong>
-                        <small>Consulte os alertas do estoque</small>
-                    </button>
+    </section>
 
-                    <button onclick="window.location.href='inventario.html'">
-                        <span>📋</span>
-                        <strong>Consulta de Inventário</strong>
-                        <small>Consulte todos os produtos</small>
-                    </button>
+</main>
 
-                </div>
-
-            </section>
-
-        </main>
-
-        <footer>
-            <p>StockMaster © 2026</p>
-        </footer>
-
-    </div>
-
-</div>
+<footer>
+    <p>StockMaster © 2026</p>
+</footer>
 
 <script src="script.js"></script>
 
