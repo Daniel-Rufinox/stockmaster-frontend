@@ -63,13 +63,11 @@ function carregarInventario() {
     tabela.innerHTML = "";
 
     if (produtos.length === 0) {
-
         tabela.innerHTML = `
             <tr>
                 <td colspan="6">Nenhum produto cadastrado.</td>
             </tr>
         `;
-
         return;
     }
 
@@ -89,9 +87,7 @@ function carregarInventario() {
                 <td>${produto.quantidade}</td>
                 <td>${produto.estoqueMinimo}</td>
                 <td>${status}</td>
-
                 <td>
-
                     <button
                         class="btn btn-primary"
                         onclick="editarProduto(${produto.id})">
@@ -103,7 +99,6 @@ function carregarInventario() {
                         onclick="excluirProduto(${produto.id})">
                         🗑️ Excluir
                     </button>
-
                 </td>
             </tr>
         `;
@@ -134,7 +129,6 @@ function editarProduto(id) {
     const formulario = document.getElementById("formEdicao");
 
     if (formulario) {
-
         formulario.style.display = "block";
 
         formulario.scrollIntoView({
@@ -289,11 +283,7 @@ function registrarEntrada() {
         Number(document.getElementById("quantidadeEntrada").value);
 
     if (!id || !quantidade || quantidade <= 0) {
-
-        alert(
-            "Selecione um produto e informe uma quantidade válida."
-        );
-
+        alert("Selecione um produto e informe uma quantidade válida.");
         return;
     }
 
@@ -301,9 +291,7 @@ function registrarEntrada() {
         produtos.find(p => p.id === id);
 
     if (!produto) {
-
         alert("Produto não encontrado.");
-
         return;
     }
 
@@ -330,11 +318,7 @@ function registrarSaida() {
         Number(document.getElementById("quantidadeSaida").value);
 
     if (!id || !quantidade || quantidade <= 0) {
-
-        alert(
-            "Selecione um produto e informe uma quantidade válida."
-        );
-
+        alert("Selecione um produto e informe uma quantidade válida.");
         return;
     }
 
@@ -342,18 +326,12 @@ function registrarSaida() {
         produtos.find(p => p.id === id);
 
     if (!produto) {
-
         alert("Produto não encontrado.");
-
         return;
     }
 
     if (quantidade > produto.quantidade) {
-
-        alert(
-            "Quantidade de saída maior que o estoque disponível."
-        );
-
+        alert("Quantidade de saída maior que o estoque disponível.");
         return;
     }
 
@@ -431,8 +409,7 @@ function carregarAlertas() {
                 lista.innerHTML += `
                     <div class="alerta">
                         ⏰ <strong>Validade próxima:</strong>
-                        ${produto.nome} vence em
-                        ${dias} dia(s).
+                        ${produto.nome} vence em ${dias} dia(s).
                     </div>
                 `;
 
@@ -443,9 +420,8 @@ function carregarAlertas() {
 
     if (quantidadeAlertas === 0) {
 
-        lista.innerHTML = `
-            <p>Nenhum alerta de estoque no momento.</p>
-        `;
+        lista.innerHTML =
+            `<p>Nenhum alerta de estoque no momento.</p>`;
     }
 }
 
@@ -466,9 +442,7 @@ function carregarDashboard() {
         document.getElementById("totalAlertas");
 
     if (totalProdutos) {
-
-        totalProdutos.textContent =
-            produtos.length;
+        totalProdutos.textContent = produtos.length;
     }
 
     if (estoqueBaixo) {
@@ -476,8 +450,7 @@ function carregarDashboard() {
         const baixo =
             produtos.filter(
                 produto =>
-                    produto.quantidade <=
-                    produto.estoqueMinimo
+                    produto.quantidade <= produto.estoqueMinimo
             ).length;
 
         estoqueBaixo.textContent = baixo;
@@ -489,10 +462,7 @@ function carregarDashboard() {
 
         produtos.forEach(produto => {
 
-            if (
-                produto.quantidade <=
-                produto.estoqueMinimo
-            ) {
+            if (produto.quantidade <= produto.estoqueMinimo) {
                 alertas++;
             }
 
@@ -503,9 +473,7 @@ function carregarDashboard() {
                 hoje.setHours(0, 0, 0, 0);
 
                 const validade =
-                    new Date(
-                        produto.validade + "T00:00:00"
-                    );
+                    new Date(produto.validade + "T00:00:00");
 
                 const dias =
                     Math.ceil(
@@ -588,7 +556,7 @@ function realizarLogin() {
 
 
 // ===============================
-// SAIR
+// SAIR DO SISTEMA
 // ===============================
 
 function sairSistema() {
@@ -608,11 +576,9 @@ document.addEventListener(
     function () {
 
         carregarDashboard();
-
         carregarInventario();
-
         carregarSelectProdutos();
-
         carregarAlertas();
+
     }
 );
