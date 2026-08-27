@@ -1,3 +1,7 @@
+/* =========================
+   CONFIGURAÇÕES GERAIS
+========================= */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,21 +10,30 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #f4f6f8;
-    color: #1f2937;
+    background: #F5F7FA;
+    color: #253247;
     min-height: 100vh;
 }
 
+/* =========================
+   MENU LATERAL
+========================= */
+
 header {
-    background: #1e3a8a;
-    color: white;
-    padding: 25px 20px;
-    text-align: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 300px;
+    height: 100vh;
+    background: #1465D8;
+    color: #FFFFFF;
+    padding: 35px 30px;
+    text-align: left;
 }
 
 header h1 {
-    font-size: 32px;
-    margin-bottom: 8px;
+    font-size: 28px;
+    margin-bottom: 55px;
 }
 
 header p {
@@ -28,147 +41,207 @@ header p {
     opacity: 0.9;
 }
 
+/* =========================
+   CONTEÚDO PRINCIPAL
+========================= */
+
 main {
-    width: 92%;
-    max-width: 1100px;
-    margin: 30px auto;
+    margin-left: 300px;
+    width: calc(100% - 300px);
+    min-height: calc(100vh - 72px);
+    padding: 45px 50px;
 }
 
+/* =========================
+   TÍTULOS
+========================= */
+
 .dashboard h2,
-.menu h2 {
-    margin-bottom: 18px;
-    color: #1e3a8a;
+.menu h2,
+.form-container h2,
+.table-container h2 {
+    color: #253247;
+    font-size: 30px;
+    margin-bottom: 25px;
 }
+
+/* =========================
+   DASHBOARD
+========================= */
 
 .cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    margin-bottom: 35px;
+    gap: 20px;
+    margin-bottom: 40px;
 }
 
 .card {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
-    text-align: center;
+    background: #FFFFFF;
+    padding: 28px;
+    border-radius: 10px;
+    border: 1px solid #D9E0EA;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    text-align: left;
 }
 
 .card h3 {
     font-size: 16px;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
+    color: #68758A;
 }
 
 .card p {
     font-size: 32px;
     font-weight: bold;
-    color: #1e3a8a;
+    color: #1465D8;
 }
+
+/* =========================
+   MENU DO DASHBOARD
+========================= */
 
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+    gap: 20px;
 }
 
 .menu-grid button {
-    background: white;
-    border: none;
-    border-radius: 12px;
-    padding: 22px;
+    background: #FFFFFF;
+    border: 1px solid #D9E0EA;
+    border-radius: 10px;
+    padding: 25px;
     text-align: left;
     cursor: pointer;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: 0.2s;
 }
 
 .menu-grid button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.08);
 }
 
 .menu-grid span {
     display: block;
     font-size: 28px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .menu-grid strong {
     display: block;
-    color: #1e3a8a;
+    color: #253247;
     font-size: 17px;
-    margin-bottom: 6px;
+    margin-bottom: 7px;
 }
 
 .menu-grid small {
-    color: #6b7280;
+    color: #68758A;
     font-size: 13px;
 }
 
+/* =========================
+   FORMULÁRIOS
+========================= */
+
 .form-container {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    background: #FFFFFF;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #D9E0EA;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    max-width: 850px;
 }
 
 .form-container h2 {
-    color: #1e3a8a;
-    margin-bottom: 22px;
+    font-size: 22px;
+    margin-bottom: 30px;
 }
 
 .form-group {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 .form-group label {
     display: block;
-    font-weight: bold;
-    margin-bottom: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #253247;
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #d1d5db;
-    border-radius: 7px;
+    padding: 14px;
+    border: 1px solid #C8D1DD;
+    border-radius: 6px;
+    background: #FFFFFF;
     font-size: 15px;
+    color: #253247;
 }
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #1465D8;
+}
+
+/* =========================
+   BOTÕES
+========================= */
 
 .btn {
     border: none;
-    border-radius: 7px;
-    padding: 12px 20px;
+    border-radius: 6px;
+    padding: 13px 20px;
     cursor: pointer;
-    font-size: 15px;
-    font-weight: bold;
+    font-size: 14px;
+    font-weight: 700;
     margin-right: 8px;
     margin-top: 8px;
 }
 
 .btn-primary {
-    background: #1e3a8a;
-    color: white;
+    background: #1465D8;
+    color: #FFFFFF;
+}
+
+.btn-primary:hover {
+    background: #0F55B8;
 }
 
 .btn-secondary {
-    background: #6b7280;
-    color: white;
+    background: #68758A;
+    color: #FFFFFF;
+}
+
+.btn-secondary:hover {
+    background: #536174;
 }
 
 .btn-danger {
-    background: #dc2626;
-    color: white;
+    background: #D64545;
+    color: #FFFFFF;
 }
 
+.btn-danger:hover {
+    background: #B93636;
+}
+
+/* =========================
+   TABELAS
+========================= */
+
 .table-container {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 25px;
     overflow-x: auto;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid #D9E0EA;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    max-width: 900px;
 }
 
 table {
@@ -178,54 +251,27 @@ table {
 
 th,
 td {
-    padding: 12px;
-    border-bottom: 1px solid #e5e7eb;
+    padding: 16px 12px;
+    border-bottom: 1px solid #E5E9EF;
     text-align: left;
+    white-space: nowrap;
 }
 
 th {
-    background: #eff6ff;
-    color: #1e3a8a;
+    background: #F5F7FA;
+    color: #68758A;
+    font-size: 14px;
 }
+
+td {
+    font-size: 15px;
+    color: #253247;
+}
+
+/* =========================
+   ALERTAS
+========================= */
 
 .alert {
     padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    background: #fef3c7;
-    border-left: 5px solid #f59e0b;
-}
-
-.back {
-    display: inline-block;
-    margin-bottom: 20px;
-    color: #1e3a8a;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-footer {
-    text-align: center;
-    padding: 25px;
-    margin-top: 40px;
-    color: #6b7280;
-}
-
-@media (max-width: 700px) {
-
-    header h1 {
-        font-size: 26px;
-    }
-
-    .cards {
-        grid-template-columns: 1fr;
-    }
-
-    .menu-grid {
-        grid-template-columns: 1fr;
-    }
-
-    main {
-        width: 94%;
-    }
-}
+    border-radius: 
