@@ -9,120 +9,597 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <script>
-        if (localStorage.getItem("usuarioLogado") !== "true") {
-            window.location.replace("login.html");
+    <style>
+        * {
+            box-sizing: border-box;
         }
-    </script>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #F5F7FA;
+            color: #253247;
+        }
+
+        .app {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* MENU LATERAL */
+
+        .sidebar {
+            width: 300px;
+            min-height: 100vh;
+            background: #1465D8;
+            color: white;
+            padding: 30px 0;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            padding: 0 40px;
+            margin-bottom: 45px;
+        }
+
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-button {
+            width: 100%;
+            padding: 18px 40px;
+            border: none;
+            background: transparent;
+            color: white;
+            text-align: left;
+            font-size: 17px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .sidebar-button:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .sidebar-icon {
+            width: 20px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        /* ÁREA PRINCIPAL */
+
+        .content {
+            margin-left: 300px;
+            width: calc(100% - 300px);
+            min-height: 100vh;
+        }
+
+        .topbar {
+            height: 72px;
+            background: white;
+            border-bottom: 1px solid #D9E0EA;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 40px;
+            color: #68758A;
+            font-size: 20px;
+        }
+
+        .main-content {
+            padding: 42px 50px;
+            max-width: 1250px;
+        }
+
+        .page-title {
+            font-size: 30px;
+            font-weight: 700;
+            margin: 0 0 30px;
+        }
+
+        /* CARDS */
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 35px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #D9E0EA;
+            border-radius: 10px;
+            padding: 30px 24px;
+        }
+
+        .card-title {
+            color: #68758A;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        .card-value {
+            font-size: 38px;
+            font-weight: 700;
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .action-button {
+            width: 100%;
+            min-height: 48px;
+            border-radius: 6px;
+            padding: 12px 18px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .primary {
+            background: #1465D8;
+            color: white;
+            border: 1px solid #1465D8;
+        }
+
+        .secondary {
+            background: white;
+            color: #253247;
+            border: 1px solid #C8D1DD;
+        }
+
+        .action-button:hover {
+            opacity: 0.9;
+        }
+
+        /* MOVIMENTAÇÕES */
+
+        .movements {
+            background: white;
+            border: 1px solid #D9E0EA;
+            border-radius: 10px;
+            padding: 30px 24px;
+        }
+
+        .movements h2 {
+            font-size: 18px;
+            margin: 0 0 30px;
+        }
+
+        .movement-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .movement-table th {
+            color: #68758A;
+            font-size: 14px;
+            text-align: left;
+            padding: 14px 8px;
+            border-bottom: 1px solid #E5E9EF;
+        }
+
+        .movement-table td {
+            font-size: 15px;
+            padding: 18px 8px;
+            border-bottom: 1px solid #E5E9EF;
+        }
+
+        .empty {
+            color: #68758A;
+            text-align: center;
+            padding: 35px !important;
+        }
+
+        /* RESPONSIVO */
+
+        @media (max-width: 800px) {
+
+            .sidebar {
+                width: 220px;
+            }
+
+            .logo {
+                padding: 0 25px;
+            }
+
+            .sidebar-button {
+                padding: 16px 25px;
+            }
+
+            .content {
+                margin-left: 220px;
+                width: calc(100% - 220px);
+            }
+
+            .main-content {
+                padding: 30px 20px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .app {
+                display: block;
+            }
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                min-height: auto;
+            }
+
+            .sidebar-menu {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .sidebar-button {
+                width: 50%;
+            }
+
+            .content {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .topbar {
+                display: none;
+            }
+
+            .main-content {
+                padding: 25px 15px;
+            }
+
+            .movement-table {
+                min-width: 650px;
+            }
+
+            .movements {
+                overflow-x: auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<header>
-    <div>
-        <h1>StockMaster</h1>
-        <p>Sistema Inteligente de Gestão de Estoque</p>
-    </div>
-</header>
+<div class="app">
 
-<main>
+    <!-- MENU LATERAL -->
 
-    <section class="dashboard">
+    <aside class="sidebar">
 
-        <h2>Dashboard</h2>
-
-        <div class="cards">
-
-            <div class="card">
-                <h3>Produtos</h3>
-                <p id="totalProdutos">0</p>
-            </div>
-
-            <div class="card">
-                <h3>Estoque baixo</h3>
-                <p id="estoqueBaixo">0</p>
-            </div>
-
-            <div class="card">
-                <h3>Alertas</h3>
-                <p id="totalAlertas">0</p>
-            </div>
-
+        <div class="logo">
+            StockMaster
         </div>
 
-    </section>
+        <nav class="sidebar-menu">
 
-    <section class="menu">
+            <button
+                class="sidebar-button"
+                type="button"
+                onclick="window.location.href='index.html'">
 
-        <h2>Gestão de Estoque</h2>
+                <span class="sidebar-icon">⌂</span>
+                <span>Dashboard</span>
 
-        <div class="menu-grid">
+            </button>
 
-            <button type="button"
+            <button
+                class="sidebar-button"
+                type="button"
                 onclick="window.location.href='cadastro-produtos.html'">
 
-                <span>📦</span>
-                <strong>Cadastro de Produtos</strong>
-                <small>Cadastre e gerencie produtos</small>
+                <span class="sidebar-icon">▣</span>
+                <span>Produtos</span>
 
             </button>
 
-            <button type="button"
+            <button
+                class="sidebar-button"
+                type="button"
                 onclick="window.location.href='entrada-estoque.html'">
 
-                <span>📥</span>
-                <strong>Entrada de Estoque</strong>
-                <small>Registre produtos recebidos</small>
+                <span class="sidebar-icon">↕</span>
+                <span>Movimentações</span>
 
             </button>
 
-            <button type="button"
-                onclick="window.location.href='saida-estoque.html'">
-
-                <span>📤</span>
-                <strong>Saída de Estoque</strong>
-                <small>Registre produtos retirados</small>
-
-            </button>
-
-            <button type="button"
+            <button
+                class="sidebar-button"
+                type="button"
                 onclick="window.location.href='alertas.html'">
 
-                <span>⚠️</span>
-                <strong>Alertas</strong>
-                <small>Consulte os alertas do estoque</small>
+                <span class="sidebar-icon">▥</span>
+                <span>Relatórios</span>
 
             </button>
 
-            <button type="button"
+            <button
+                class="sidebar-button"
+                type="button"
                 onclick="window.location.href='inventario.html'">
 
-                <span>📋</span>
-                <strong>Consulta de Inventário</strong>
-                <small>Consulte todos os produtos</small>
+                <span class="sidebar-icon">♙</span>
+                <span>Usuários</span>
 
             </button>
 
-            <button type="button"
+            <button
+                class="sidebar-button"
+                type="button"
                 onclick="sairSistema()">
 
-                <span>🚪</span>
-                <strong>Sair do sistema</strong>
-                <small>Encerrar a sessão</small>
+                <span class="sidebar-icon">↪</span>
+                <span>Sair</span>
 
             </button>
 
-        </div>
+        </nav>
 
-    </section>
+    </aside>
 
-</main>
 
-<footer>
-    <p>StockMaster © 2026</p>
-</footer>
+    <!-- CONTEÚDO -->
+
+    <div class="content">
+
+        <header class="topbar">
+            ◯ &nbsp; ◉ &nbsp; ♙
+        </header>
+
+
+        <main class="main-content">
+
+            <h1 class="page-title">
+                Dashboard
+            </h1>
+
+
+            <!-- CARDS -->
+
+            <section class="dashboard-grid">
+
+                <div class="card">
+
+                    <div class="card-title">
+                        Total de Produtos
+                    </div>
+
+                    <div
+                        class="card-value"
+                        id="totalProdutos">
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-title">
+                        Itens em Estoque
+                    </div>
+
+                    <div
+                        class="card-value"
+                        id="itensEstoque">
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        class="action-button primary"
+                        type="button"
+                        onclick="window.location.href='cadastro-produtos.html'">
+
+                        + Cadastrar Produto
+
+                    </button>
+
+
+                    <button
+                        class="action-button secondary"
+                        type="button"
+                        onclick="window.location.href='inventario.html'">
+
+                        Ver Estoque
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ÚLTIMAS MOVIMENTAÇÕES -->
+
+            <section class="movements">
+
+                <h2>
+                    Últimas Movimentações
+                </h2>
+
+                <table class="movement-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Produto</th>
+
+                            <th>Categoria</th>
+
+                            <th>Quantidade</th>
+
+                            <th>Estoque</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="tabelaMovimentacoes">
+
+                        <tr>
+                            <td
+                                colspan="4"
+                                class="empty">
+
+                                Nenhum produto cadastrado.
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</div>
+
 
 <script src="script.js"></script>
+
+<script>
+
+    function atualizarDashboardVisual() {
+
+        const produtos =
+            JSON.parse(
+                localStorage.getItem("produtos")
+            ) || [];
+
+
+        const totalProdutos =
+            document.getElementById(
+                "totalProdutos"
+            );
+
+        const itensEstoque =
+            document.getElementById(
+                "itensEstoque"
+            );
+
+        const tabela =
+            document.getElementById(
+                "tabelaMovimentacoes"
+            );
+
+
+        if (totalProdutos) {
+
+            totalProdutos.textContent =
+                produtos.length;
+        }
+
+
+        if (itensEstoque) {
+
+            const total =
+                produtos.reduce(
+                    (soma, produto) =>
+                        soma +
+                        Number(produto.quantidade || 0),
+                    0
+                );
+
+            itensEstoque.textContent =
+                total;
+        }
+
+
+        if (tabela) {
+
+            if (produtos.length === 0) {
+
+                tabela.innerHTML = `
+                    <tr>
+                        <td
+                            colspan="4"
+                            class="empty">
+
+                            Nenhum produto cadastrado.
+
+                        </td>
+                    </tr>
+                `;
+
+                return;
+            }
+
+
+            tabela.innerHTML = "";
+
+
+            produtos.slice(-5).reverse().forEach(
+                produto => {
+
+                    tabela.innerHTML += `
+                        <tr>
+
+                            <td>
+                                ${produto.nome}
+                            </td>
+
+                            <td>
+                                ${produto.categoria}
+                            </td>
+
+                            <td>
+                                ${produto.quantidade}
+                            </td>
+
+                            <td>
+                                ${produto.estoqueMinimo}
+                            </td>
+
+                        </tr>
+                    `;
+                }
+            );
+        }
+    }
+
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            atualizarDashboardVisual();
+
+        }
+    );
+
+</script>
 
 </body>
 </html>
