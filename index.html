@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
 
     <script>
-        // Proteção do Dashboard
+        // Verifica se o usuário está logado
         if (localStorage.getItem("usuarioLogado") !== "true") {
             window.location.href = "login.html";
         }
@@ -20,26 +20,11 @@
 <body>
 
 <header>
-    <h1>StockMaster</h1>
-    <p>Sistema Inteligente de Gestão de Estoque</p>
+    <div>
+        <h1>StockMaster</h1>
+        <p>Sistema Inteligente de Gestão de Estoque</p>
+    </div>
 </header>
-
-<!-- MENU -->
-<nav class="menu-navegacao">
-
-    <a href="index.html">⌂ Dashboard</a>
-
-    <a href="cadastro-produtos.html">▣ Produtos</a>
-
-    <a href="entrada-estoque.html">↕ Movimentações</a>
-
-    <a href="inventario.html">▥ Relatórios</a>
-
-    <a href="inventario.html">♙ Usuários</a>
-
-    <a href="#" onclick="sairSistema(); return false;">↪ Sair</a>
-
-</nav>
 
 <main>
 
