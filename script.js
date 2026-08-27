@@ -2,7 +2,8 @@
 // BANCO DE DADOS LOCAL
 // ===============================
 
-let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+let produtos =
+    JSON.parse(localStorage.getItem("produtos")) || [];
 
 
 // ===============================
@@ -10,7 +11,11 @@ let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
 // ===============================
 
 function salvarProdutos() {
-    localStorage.setItem("produtos", JSON.stringify(produtos));
+
+    localStorage.setItem(
+        "produtos",
+        JSON.stringify(produtos)
+    );
 }
 
 
@@ -20,23 +25,51 @@ function salvarProdutos() {
 
 function cadastrarProduto() {
 
-    const nome = document.getElementById("nomeProduto").value.trim();
-    const categoria = document.getElementById("categoriaProduto").value.trim();
-    const quantidade = Number(document.getElementById("quantidadeProduto").value);
-    const estoqueMinimo = Number(document.getElementById("estoqueMinimo").value);
-    const validade = document.getElementById("validadeProduto").value;
+    const nome =
+        document.getElementById("nomeProduto").value.trim();
 
-    if (!nome || !categoria || isNaN(quantidade) || isNaN(estoqueMinimo)) {
-        alert("Preencha todos os campos obrigatórios.");
+    const categoria =
+        document.getElementById("categoriaProduto").value.trim();
+
+    const quantidade =
+        Number(
+            document.getElementById("quantidadeProduto").value
+        );
+
+    const estoqueMinimo =
+        Number(
+            document.getElementById("estoqueMinimo").value
+        );
+
+    const validade =
+        document.getElementById("validadeProduto").value;
+
+    if (
+        !nome ||
+        !categoria ||
+        isNaN(quantidade) ||
+        isNaN(estoqueMinimo)
+    ) {
+
+        alert(
+            "Preencha todos os campos obrigatórios."
+        );
+
         return;
     }
 
     const produto = {
+
         id: Date.now(),
+
         nome: nome,
+
         categoria: categoria,
+
         quantidade: quantidade,
+
         estoqueMinimo: estoqueMinimo,
+
         validade: validade
     };
 
@@ -44,9 +77,12 @@ function cadastrarProduto() {
 
     salvarProdutos();
 
-    alert("Produto cadastrado com sucesso!");
+    alert(
+        "Produto cadastrado com sucesso!"
+    );
 
-    window.location.href = "inventario.html";
+    window.location.href =
+        "inventario.html";
 }
 
 
@@ -56,50 +92,70 @@ function cadastrarProduto() {
 
 function carregarInventario() {
 
-    const tabela = document.getElementById("tabelaProdutos");
+    const tabela =
+        document.getElementById("tabelaProdutos");
 
     if (!tabela) return;
 
     tabela.innerHTML = "";
 
     if (produtos.length === 0) {
+
         tabela.innerHTML = `
             <tr>
-                <td colspan="6">Nenhum produto cadastrado.</td>
+                <td colspan="6">
+                    Nenhum produto cadastrado.
+                </td>
             </tr>
         `;
+
         return;
     }
 
     produtos.forEach(produto => {
 
         const estoqueBaixo =
-            produto.quantidade <= produto.estoqueMinimo;
+            produto.quantidade <=
+            produto.estoqueMinimo;
 
-        const status = estoqueBaixo
-            ? "Estoque baixo"
-            : "Normal";
+        const status =
+            estoqueBaixo
+                ? "Estoque baixo"
+                : "Normal";
 
         tabela.innerHTML += `
             <tr>
+
                 <td>${produto.nome}</td>
+
                 <td>${produto.categoria}</td>
+
                 <td>${produto.quantidade}</td>
+
                 <td>${produto.estoqueMinimo}</td>
+
                 <td>${status}</td>
+
                 <td>
+
                     <button
                         class="btn btn-primary"
                         onclick="editarProduto(${produto.id})">
+
                         ✏️ Editar
+
                     </button>
 
                     <button
                         class="btn btn-secondary"
                         onclick="excluirProduto(${produto.id})">
+
                         🗑️ Excluir
+
                     </button>
+
                 </td>
+
             </tr>
         `;
     });
@@ -112,24 +168,54 @@ function carregarInventario() {
 
 function editarProduto(id) {
 
-    const produto = produtos.find(p => p.id === id);
+    const produto =
+        produtos.find(
+            p => p.id === id
+        );
 
     if (!produto) {
-        alert("Produto não encontrado.");
+
+        alert(
+            "Produto não encontrado."
+        );
+
         return;
     }
 
-    document.getElementById("editarId").value = produto.id;
-    document.getElementById("editarNome").value = produto.nome;
-    document.getElementById("editarCategoria").value = produto.categoria;
-    document.getElementById("editarQuantidade").value = produto.quantidade;
-    document.getElementById("editarEstoqueMinimo").value = produto.estoqueMinimo;
-    document.getElementById("editarValidade").value = produto.validade || "";
+    document.getElementById(
+        "editarId"
+    ).value = produto.id;
 
-    const formulario = document.getElementById("formEdicao");
+    document.getElementById(
+        "editarNome"
+    ).value = produto.nome;
+
+    document.getElementById(
+        "editarCategoria"
+    ).value = produto.categoria;
+
+    document.getElementById(
+        "editarQuantidade"
+    ).value = produto.quantidade;
+
+    document.getElementById(
+        "editarEstoqueMinimo"
+    ).value = produto.estoqueMinimo;
+
+    document.getElementById(
+        "editarValidade"
+    ).value =
+        produto.validade || "";
+
+    const formulario =
+        document.getElementById(
+            "formEdicao"
+        );
 
     if (formulario) {
-        formulario.style.display = "block";
+
+        formulario.style.display =
+            "block";
 
         formulario.scrollIntoView({
             behavior: "smooth",
@@ -145,35 +231,90 @@ function editarProduto(id) {
 
 function salvarEdicao() {
 
-    const id = Number(document.getElementById("editarId").value);
+    const id =
+        Number(
+            document.getElementById(
+                "editarId"
+            ).value
+        );
 
-    const nome = document.getElementById("editarNome").value.trim();
-    const categoria = document.getElementById("editarCategoria").value.trim();
-    const quantidade = Number(document.getElementById("editarQuantidade").value);
-    const estoqueMinimo = Number(document.getElementById("editarEstoqueMinimo").value);
-    const validade = document.getElementById("editarValidade").value;
+    const nome =
+        document.getElementById(
+            "editarNome"
+        ).value.trim();
 
-    if (!nome || !categoria || isNaN(quantidade) || isNaN(estoqueMinimo)) {
-        alert("Preencha todos os campos obrigatórios.");
+    const categoria =
+        document.getElementById(
+            "editarCategoria"
+        ).value.trim();
+
+    const quantidade =
+        Number(
+            document.getElementById(
+                "editarQuantidade"
+            ).value
+        );
+
+    const estoqueMinimo =
+        Number(
+            document.getElementById(
+                "editarEstoqueMinimo"
+            ).value
+        );
+
+    const validade =
+        document.getElementById(
+            "editarValidade"
+        ).value;
+
+    if (
+        !nome ||
+        !categoria ||
+        isNaN(quantidade) ||
+        isNaN(estoqueMinimo)
+    ) {
+
+        alert(
+            "Preencha todos os campos obrigatórios."
+        );
+
         return;
     }
 
-    const produto = produtos.find(p => p.id === id);
+    const produto =
+        produtos.find(
+            p => p.id === id
+        );
 
     if (!produto) {
-        alert("Produto não encontrado.");
+
+        alert(
+            "Produto não encontrado."
+        );
+
         return;
     }
 
-    produto.nome = nome;
-    produto.categoria = categoria;
-    produto.quantidade = quantidade;
-    produto.estoqueMinimo = estoqueMinimo;
-    produto.validade = validade;
+    produto.nome =
+        nome;
+
+    produto.categoria =
+        categoria;
+
+    produto.quantidade =
+        quantidade;
+
+    produto.estoqueMinimo =
+        estoqueMinimo;
+
+    produto.validade =
+        validade;
 
     salvarProdutos();
 
-    alert("Produto alterado com sucesso!");
+    alert(
+        "Produto alterado com sucesso!"
+    );
 
     cancelarEdicao();
 
@@ -187,10 +328,15 @@ function salvarEdicao() {
 
 function cancelarEdicao() {
 
-    const formulario = document.getElementById("formEdicao");
+    const formulario =
+        document.getElementById(
+            "formEdicao"
+        );
 
     if (formulario) {
-        formulario.style.display = "none";
+
+        formulario.style.display =
+            "none";
     }
 }
 
@@ -201,42 +347,57 @@ function cancelarEdicao() {
 
 function excluirProduto(id) {
 
-    const produto = produtos.find(p => p.id === id);
+    const produto =
+        produtos.find(
+            p => p.id === id
+        );
 
     if (!produto) {
-        alert("Produto não encontrado.");
+
+        alert(
+            "Produto não encontrado."
+        );
+
         return;
     }
 
-    const confirmar = confirm(
-        `Deseja realmente excluir o produto "${produto.nome}"?`
-    );
+    const confirmar =
+        confirm(
+            `Deseja realmente excluir o produto "${produto.nome}"?`
+        );
 
-    if (!confirmar) {
-        return;
-    }
+    if (!confirmar) return;
 
-    produtos = produtos.filter(p => p.id !== id);
+    produtos =
+        produtos.filter(
+            p => p.id !== id
+        );
 
     salvarProdutos();
 
-    alert("Produto excluído com sucesso!");
+    alert(
+        "Produto excluído com sucesso!"
+    );
 
     carregarInventario();
 }
 
 
 // ===============================
-// PREENCHER PRODUTOS NOS SELECTS
+// SELECTS DE PRODUTOS
 // ===============================
 
 function carregarSelectProdutos() {
 
     const selectEntrada =
-        document.getElementById("produtoEntrada");
+        document.getElementById(
+            "produtoEntrada"
+        );
 
     const selectSaida =
-        document.getElementById("produtoSaida");
+        document.getElementById(
+            "produtoSaida"
+        );
 
     if (selectEntrada) {
 
@@ -277,31 +438,57 @@ function carregarSelectProdutos() {
 function registrarEntrada() {
 
     const id =
-        Number(document.getElementById("produtoEntrada").value);
+        Number(
+            document.getElementById(
+                "produtoEntrada"
+            ).value
+        );
 
     const quantidade =
-        Number(document.getElementById("quantidadeEntrada").value);
+        Number(
+            document.getElementById(
+                "quantidadeEntrada"
+            ).value
+        );
 
-    if (!id || !quantidade || quantidade <= 0) {
-        alert("Selecione um produto e informe uma quantidade válida.");
+    if (
+        !id ||
+        !quantidade ||
+        quantidade <= 0
+    ) {
+
+        alert(
+            "Selecione um produto e informe uma quantidade válida."
+        );
+
         return;
     }
 
     const produto =
-        produtos.find(p => p.id === id);
+        produtos.find(
+            p => p.id === id
+        );
 
     if (!produto) {
-        alert("Produto não encontrado.");
+
+        alert(
+            "Produto não encontrado."
+        );
+
         return;
     }
 
-    produto.quantidade += quantidade;
+    produto.quantidade +=
+        quantidade;
 
     salvarProdutos();
 
-    alert("Entrada registrada com sucesso!");
+    alert(
+        "Entrada registrada com sucesso!"
+    );
 
-    window.location.href = "inventario.html";
+    window.location.href =
+        "inventario.html";
 }
 
 
@@ -312,36 +499,69 @@ function registrarEntrada() {
 function registrarSaida() {
 
     const id =
-        Number(document.getElementById("produtoSaida").value);
+        Number(
+            document.getElementById(
+                "produtoSaida"
+            ).value
+        );
 
     const quantidade =
-        Number(document.getElementById("quantidadeSaida").value);
+        Number(
+            document.getElementById(
+                "quantidadeSaida"
+            ).value
+        );
 
-    if (!id || !quantidade || quantidade <= 0) {
-        alert("Selecione um produto e informe uma quantidade válida.");
+    if (
+        !id ||
+        !quantidade ||
+        quantidade <= 0
+    ) {
+
+        alert(
+            "Selecione um produto e informe uma quantidade válida."
+        );
+
         return;
     }
 
     const produto =
-        produtos.find(p => p.id === id);
+        produtos.find(
+            p => p.id === id
+        );
 
     if (!produto) {
-        alert("Produto não encontrado.");
+
+        alert(
+            "Produto não encontrado."
+        );
+
         return;
     }
 
-    if (quantidade > produto.quantidade) {
-        alert("Quantidade de saída maior que o estoque disponível.");
+    if (
+        quantidade >
+        produto.quantidade
+    ) {
+
+        alert(
+            "Quantidade de saída maior que o estoque disponível."
+        );
+
         return;
     }
 
-    produto.quantidade -= quantidade;
+    produto.quantidade -=
+        quantidade;
 
     salvarProdutos();
 
-    alert("Saída registrada com sucesso!");
+    alert(
+        "Saída registrada com sucesso!"
+    );
 
-    window.location.href = "inventario.html";
+    window.location.href =
+        "inventario.html";
 }
 
 
@@ -352,7 +572,9 @@ function registrarSaida() {
 function carregarAlertas() {
 
     const lista =
-        document.getElementById("listaAlertas");
+        document.getElementById(
+            "listaAlertas"
+        );
 
     if (!lista) return;
 
@@ -362,13 +584,25 @@ function carregarAlertas() {
 
     produtos.forEach(produto => {
 
-        if (produto.quantidade <= produto.estoqueMinimo) {
+        if (
+            produto.quantidade <=
+            produto.estoqueMinimo
+        ) {
 
             lista.innerHTML += `
                 <div class="alerta">
-                    ⚠️ <strong>Estoque baixo:</strong>
-                    ${produto.nome} possui apenas
-                    ${produto.quantidade} unidade(s).
+
+                    ⚠️
+
+                    <strong>
+                        Estoque baixo:
+                    </strong>
+
+                    ${produto.nome}
+                    possui apenas
+                    ${produto.quantidade}
+                    unidade(s).
+
                 </div>
             `;
 
@@ -377,15 +611,25 @@ function carregarAlertas() {
 
         if (produto.validade) {
 
-            const hoje = new Date();
+            const hoje =
+                new Date();
 
-            hoje.setHours(0, 0, 0, 0);
+            hoje.setHours(
+                0,
+                0,
+                0,
+                0
+            );
 
             const dataValidade =
-                new Date(produto.validade + "T00:00:00");
+                new Date(
+                    produto.validade +
+                    "T00:00:00"
+                );
 
             const diferenca =
-                dataValidade.getTime() - hoje.getTime();
+                dataValidade.getTime() -
+                hoje.getTime();
 
             const dias =
                 Math.ceil(
@@ -397,8 +641,15 @@ function carregarAlertas() {
 
                 lista.innerHTML += `
                     <div class="alerta">
-                        ❌ <strong>Produto vencido:</strong>
+
+                        ❌
+
+                        <strong>
+                            Produto vencido:
+                        </strong>
+
                         ${produto.nome}.
+
                     </div>
                 `;
 
@@ -408,8 +659,18 @@ function carregarAlertas() {
 
                 lista.innerHTML += `
                     <div class="alerta">
-                        ⏰ <strong>Validade próxima:</strong>
-                        ${produto.nome} vence em ${dias} dia(s).
+
+                        ⏰
+
+                        <strong>
+                            Validade próxima:
+                        </strong>
+
+                        ${produto.nome}
+                        vence em
+                        ${dias}
+                        dia(s).
+
                     </div>
                 `;
 
@@ -421,7 +682,7 @@ function carregarAlertas() {
     if (quantidadeAlertas === 0) {
 
         lista.innerHTML =
-            `<p>Nenhum alerta de estoque no momento.</p>`;
+            "<p>Nenhum alerta de estoque no momento.</p>";
     }
 }
 
@@ -433,16 +694,24 @@ function carregarAlertas() {
 function carregarDashboard() {
 
     const totalProdutos =
-        document.getElementById("totalProdutos");
+        document.getElementById(
+            "totalProdutos"
+        );
 
     const estoqueBaixo =
-        document.getElementById("estoqueBaixo");
+        document.getElementById(
+            "estoqueBaixo"
+        );
 
     const totalAlertas =
-        document.getElementById("totalAlertas");
+        document.getElementById(
+            "totalAlertas"
+        );
 
     if (totalProdutos) {
-        totalProdutos.textContent = produtos.length;
+
+        totalProdutos.textContent =
+            produtos.length;
     }
 
     if (estoqueBaixo) {
@@ -450,10 +719,12 @@ function carregarDashboard() {
         const baixo =
             produtos.filter(
                 produto =>
-                    produto.quantidade <= produto.estoqueMinimo
+                    produto.quantidade <=
+                    produto.estoqueMinimo
             ).length;
 
-        estoqueBaixo.textContent = baixo;
+        estoqueBaixo.textContent =
+            baixo;
     }
 
     if (totalAlertas) {
@@ -462,18 +733,31 @@ function carregarDashboard() {
 
         produtos.forEach(produto => {
 
-            if (produto.quantidade <= produto.estoqueMinimo) {
+            if (
+                produto.quantidade <=
+                produto.estoqueMinimo
+            ) {
+
                 alertas++;
             }
 
             if (produto.validade) {
 
-                const hoje = new Date();
+                const hoje =
+                    new Date();
 
-                hoje.setHours(0, 0, 0, 0);
+                hoje.setHours(
+                    0,
+                    0,
+                    0,
+                    0
+                );
 
                 const validade =
-                    new Date(produto.validade + "T00:00:00");
+                    new Date(
+                        produto.validade +
+                        "T00:00:00"
+                    );
 
                 const dias =
                     Math.ceil(
@@ -487,7 +771,8 @@ function carregarDashboard() {
             }
         });
 
-        totalAlertas.textContent = alertas;
+        totalAlertas.textContent =
+            alertas;
     }
 }
 
@@ -499,13 +784,19 @@ function carregarDashboard() {
 function realizarLogin() {
 
     const usuario =
-        document.getElementById("usuario");
+        document.getElementById(
+            "usuario"
+        );
 
     const senha =
-        document.getElementById("senha");
+        document.getElementById(
+            "senha"
+        );
 
     const mensagem =
-        document.getElementById("mensagemLogin");
+        document.getElementById(
+            "mensagemLogin"
+        );
 
     if (!usuario || !senha) {
         return;
@@ -517,11 +808,15 @@ function realizarLogin() {
     const senhaUsuario =
         senha.value.trim();
 
-    if (!nomeUsuario || !senhaUsuario) {
+    if (
+        !nomeUsuario ||
+        !senhaUsuario
+    ) {
 
         if (mensagem) {
 
-            mensagem.style.display = "block";
+            mensagem.style.display =
+                "block";
 
             mensagem.textContent =
                 "Preencha o usuário e a senha.";
@@ -540,13 +835,16 @@ function realizarLogin() {
             "true"
         );
 
-        window.location.href = "index.html";
+        window.location.replace(
+            "index.html"
+        );
 
     } else {
 
         if (mensagem) {
 
-            mensagem.style.display = "block";
+            mensagem.style.display =
+                "block";
 
             mensagem.textContent =
                 "Usuário ou senha incorretos.";
@@ -561,14 +859,18 @@ function realizarLogin() {
 
 function sairSistema() {
 
-    localStorage.removeItem("usuarioLogado");
+    localStorage.removeItem(
+        "usuarioLogado"
+    );
 
-    window.location.href = "login.html";
+    window.location.replace(
+        "login.html"
+    );
 }
 
 
 // ===============================
-// EXECUTAR AO ABRIR AS PÁGINAS
+// INICIALIZAÇÃO
 // ===============================
 
 document.addEventListener(
@@ -576,8 +878,11 @@ document.addEventListener(
     function () {
 
         carregarDashboard();
+
         carregarInventario();
+
         carregarSelectProdutos();
+
         carregarAlertas();
 
     }
