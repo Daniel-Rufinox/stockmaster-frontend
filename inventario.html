@@ -1,82 +1,128 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta de Inventário - StockMaster</title>
     <link rel="stylesheet" href="style.css">
-</head><body><header>
+</head>
+
+<body>
+
+<header>
     <h1>StockMaster</h1>
-    <p>Consulta de Inventário</p>
-</header><main><a href="index.html" class="back">← Voltar ao Dashboard</a>
 
-<section class="table-container">
+    <nav>
+        <p>⌂ &nbsp; Dashboard</p>
+        <p>▣ &nbsp; Produtos</p>
+        <p>↕ &nbsp; Movimentações</p>
+        <p>▥ &nbsp; Relatórios</p>
+        <p>♙ &nbsp; Usuários</p>
+        <p>↪ &nbsp; Sair</p>
+    </nav>
+</header>
 
-    <h2>Inventário de Produtos</h2>
+<main>
 
-    <br>
+    <a href="index.html" class="back">← Voltar ao Dashboard</a>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Produto</th>
-                <th>Categoria</th>
-                <th>Quantidade</th>
-                <th>Estoque mínimo</th>
-                <th>Status</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
+    <section class="table-container">
 
-        <tbody id="tabelaProdutos">
-        </tbody>
-    </table>
+        <h2>Inventário de Produtos</h2>
 
-</section>
+        <table>
 
-<!-- FORMULÁRIO DE EDIÇÃO -->
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Categoria</th>
+                    <th>Quantidade</th>
+                    <th>Estoque mínimo</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
 
-<section class="form-container" id="formEdicao" style="display: none;">
+            <tbody id="tabelaProdutos">
+            </tbody>
 
-    <h2>Editar Produto</h2>
+        </table>
 
-    <input type="hidden" id="editarId">
+    </section>
 
-    <div class="form-group">
-        <label for="editarNome">Nome do produto</label>
-        <input type="text" id="editarNome">
-    </div>
+    <!-- FORMULÁRIO DE EDIÇÃO -->
 
-    <div class="form-group">
-        <label for="editarCategoria">Categoria</label>
-        <input type="text" id="editarCategoria">
-    </div>
+    <section
+        class="form-container"
+        id="formEdicao"
+        style="display: none; margin-top: 25px;"
+    >
 
-    <div class="form-group">
-        <label for="editarQuantidade">Quantidade</label>
-        <input type="number" id="editarQuantidade" min="0">
-    </div>
+        <h2>Editar Produto</h2>
 
-    <div class="form-group">
-        <label for="editarEstoqueMinimo">Estoque mínimo</label>
-        <input type="number" id="editarEstoqueMinimo" min="0">
-    </div>
+        <input type="hidden" id="editarId">
 
-    <div class="form-group">
-        <label for="editarValidade">Data de validade</label>
-        <input type="date" id="editarValidade">
-    </div>
+        <div class="form-group">
+            <label for="editarNome">Nome do produto</label>
+            <input type="text" id="editarNome">
+        </div>
 
-    <button class="btn btn-primary" onclick="salvarEdicao()">
-        Salvar alterações
-    </button>
+        <div class="form-group">
+            <label for="editarCategoria">Categoria</label>
+            <input type="text" id="editarCategoria">
+        </div>
 
-    <button class="btn btn-secondary" type="button" onclick="cancelarEdicao()">
-        Cancelar
-    </button>
+        <div class="form-group">
+            <label for="editarQuantidade">Quantidade</label>
+            <input
+                type="number"
+                id="editarQuantidade"
+                min="0"
+            >
+        </div>
 
-</section>
+        <div class="form-group">
+            <label for="editarEstoqueMinimo">Estoque mínimo</label>
+            <input
+                type="number"
+                id="editarEstoqueMinimo"
+                min="0"
+            >
+        </div>
 
-</main><footer>
+        <div class="form-group">
+            <label for="editarValidade">Data de validade</label>
+            <input
+                type="date"
+                id="editarValidade"
+            >
+        </div>
+
+        <button
+            class="btn btn-primary"
+            type="button"
+            onclick="salvarEdicao()"
+        >
+            Salvar alterações
+        </button>
+
+        <button
+            class="btn btn-secondary"
+            type="button"
+            onclick="cancelarEdicao()"
+        >
+            Cancelar
+        </button>
+
+    </section>
+
+</main>
+
+<footer>
     <p>StockMaster © 2026</p>
-</footer><script src="script.js"></script></body>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
 </html>
